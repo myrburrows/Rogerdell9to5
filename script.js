@@ -5,6 +5,12 @@ import { WORDS5 } from "./words5.js";
 import { MYWORD5 } from "./myword5.js";
 import { WORDS6 } from "./words6.js";
 import { MYWORD6 } from "./myword6.js";
+import { WORDS7 } from "./words7.js";
+import { MYWORD7 } from "./myword7.js";
+import { WORDS8 } from "./words8.js";
+import { MYWORD8 } from "./myword8.js";
+import { WORDS9 } from "./words9.js";
+import { MYWORD9 } from "./myword9.js";
 
 if (myGame === 1) {
   const NUMBER_OF_GUESSES = 6;
