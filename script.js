@@ -508,7 +508,7 @@ else if (myGame === 2) {
       if (letterColor[i] == "green") continue;
   
       //checking right letters
-      for (let j = 0; j < 5; j++) {
+      for (let j = 0; j < 7; j++) {
         if (rightGuess[j] == currentGuess[i]) {
           letterColor[i] = "yellow";
           rightGuess[j] = "#";
@@ -711,7 +711,7 @@ else if (myGame === 3) {
       if (letterColor[i] == "green") continue;
   
       //checking right letters
-      for (let j = 0; j < 5; j++) {
+      for (let j = 0; j < 8; j++) {
         if (rightGuess[j] == currentGuess[i]) {
           letterColor[i] = "yellow";
           rightGuess[j] = "#";
@@ -910,11 +910,11 @@ else if (myGame === 4) {
   
     //check yellow
     //checking guess letters
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < 9; i++) {
       if (letterColor[i] == "green") continue;
   
       //checking right letters
-      for (let j = 0; j < 5; j++) {
+      for (let j = 0; j < 9; j++) {
         if (rightGuess[j] == currentGuess[i]) {
           letterColor[i] = "yellow";
           rightGuess[j] = "#";
