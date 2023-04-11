@@ -1,5 +1,5 @@
 const myGame = Math.floor(Math.random() * 5);
-console.log(myGame);
+console.log(myGame + 5);
 
 import { WORDS5 } from "./words5.js";
 import { MYWORD5 } from "./myword5.js";
