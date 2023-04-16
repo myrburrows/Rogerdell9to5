@@ -1,0 +1,66 @@
+function solver3() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var sheet = ss.getSheetByName("5-letter words")
+
+  var rowLast = sheet.getDataRange().getNumRows();
+  var colLast = sheet.getDataRange().getNumColumns();
+
+  var myArray = sheet.getRange(1, 1, rowLast, 1).getValues();
+
+  for (var j = 0; j < 6; j++) {
+    var myGuess = sheet.getRange(1 + j, 2).getValue();
+    var myScore = sheet.getRange(1 + j, 3).getValue();
+    Logger.log(myGuess + "   " + myScore)
+    if (myGuess === "" || myScore === "") { return }
+    myScore = myScore.toString();
+
+    myArray = fg1(myGuess, myScore, myArray)
+    
+    Logger.log(myArray.length)
+    if (j == 0) { sheet.getRange('D1:E3204').clear({ contentsOnly: true }); }
+    sheet.getRange(1, 4 + j).setValue(myGuess)
+    sheet.getRange(2,4+j,myArray.length,1).setValues(myArray);
+  }
+  /*
+    var guess1 = sheet.getRange('B3').getValue();
+    var guess1Score = sheet.getRange('B4').getValue();
+    if (guess1 === "" || guess1Score === "") { return }
+    guess1Score = guess1Score.toString();
+    myArray = fg1(guess1, guess1Score, myArray)
+    Logger.log(myArray.length)
+    sheet.getRange('D1').setValue(guess1)
+    sheet.getRange('D2:D' + (myArray.length + 1)).setValues(myArray);
+  
+    var guess1 = sheet.getRange('B5').getValue();
+    var guess1Score = sheet.getRange('B6').getValue();
+    if (guess1 === "" || guess1Score === "") { return }
+    guess1Score = guess1Score.toString();
+    myArray = fg1(guess1, guess1Score, myArray)
+    Logger.log(myArray.length)
+    sheet.getRange('E1').setValue(guess1)
+    sheet.getRange('E2:E' + (myArray.length + 1)).setValues(myArray);
+  */
+
+}
+
+function fg1(guess, score, myArray) {
+
+  Logger.log(guess + "   " + score + "   " + myArray.length)
+  for (var i = 0; i < 5; i++) {
+    if (score.substring(i, i + 1) == "0") {
+      myArray = myArray.filter(function (value) { return !value.toString().includes(guess.substring(i, i + 1)) });
+    }
+
+    if (score.substring(i, i + 1) == "1") {
+      myArray = myArray.filter(function (value) { return value.toString().includes(guess.substring(i, i + 1)) });
+      myArray = myArray.filter(function (value) { return value.toString().substring(i, i + 1) !== guess.substring(i, i + 1) });
+    }
+
+    if (score.substring(i, i + 1) == "2") {
+      myArray = myArray.filter(function (value) { return value.toString().substring(i, i + 1) == guess.substring(i, i + 1) });
+    }
+  }
+
+  return myArray
+
+}
